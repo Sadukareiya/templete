@@ -53,7 +53,7 @@ public class DBConnector {
             // 指定されたJDBCドライバーをロード。これによってJDBCがMySQLに接続できるようになる
 
             // データベースへの接続
-            con = DriverManager.getConnection(url, user, password);
+            con = DriverManager.getConnection(url,user,password);
             // DriverManagerのgetConnectionメソッドを使って、データベースに接続しConnectionオブジェクトを取得
 
         } catch (ClassNotFoundException e) {
