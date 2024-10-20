@@ -1,73 +1,61 @@
 package com.diworksdev.template.action;
 
-import java.sql.SQLException; // SQL関連の例外を処理するためのインポート
-import java.util.Map; // マップを使用するためのインポート
+import java.sql.SQLException;
+import java.util.Map;
 
-import org.apache.struts2.interceptor.SessionAware; // セッションを扱うためのインターフェース
+import org.apache.struts2.interceptor.SessionAware;
 
-import com.diworksdev.template.dao.UserCreateCompleteDAO; // DAOクラスのインポート
-import com.opensymphony.xwork2.ActionSupport; // ActionSupportクラスのインポート
+import com.diworksdev.template.dao.UserCreateCompleteDAO;
+import com.opensymphony.xwork2.ActionSupport;
 
 public class UserCreateCompleteAction extends ActionSupport implements SessionAware {
-    // フィールドの定義
-    private String loginUserId; // ログインID
-    private String loginPassword; // ログインパスワード
-    private String userName; // ユーザー名
-    private Map<String, Object> session; // セッション情報を格納するマップ
 
-    // executeメソッド
+    private String loginUserId;
+    private String loginPassword;
+    private String userName;
+    private Map<String, Object> session;
+
     public String execute() throws SQLException {
-        UserCreateCompleteDAO userCreateCompleteDAO = new UserCreateCompleteDAO(); // DAOのインスタンスを作成
-
-        // セッションからユーザー情報を取得してユーザーを作成
+        UserCreateCompleteDAO userCreateCompleteDAO = new UserCreateCompleteDAO();
         userCreateCompleteDAO.createUser(
             session.get("loginUserId").toString(),
             session.get("loginPassword").toString(),
             session.get("userName").toString()
         );
-
-        String result = SUCCESS; // 成功結果を返す
-        return result; // 成功を返す
+        String result = SUCCESS;
+        return result;
     }
 
-    // getterメソッド
     public String getLoginUserId() {
-        return loginUserId; // ログインIDを返す
+        return loginUserId;
     }
 
-    // setterメソッド
     public void setLoginUserId(String loginUserId) {
-        this.loginUserId = loginUserId; // ログインIDを設定
+        this.loginUserId = loginUserId;
     }
 
-    // getterメソッド
     public String getLoginPassword() {
-        return loginPassword; // ログインパスワードを返す
+        return loginPassword;
     }
 
-    // setterメソッド
     public void setLoginPassword(String loginPassword) {
-        this.loginPassword = loginPassword; // ログインパスワードを設定
+        this.loginPassword = loginPassword;
     }
 
-    // getterメソッド
     public String getUserName() {
-        return userName; // ユーザー名を返す
+        return userName;
     }
 
-    // setterメソッド
     public void setUserName(String userName) {
-        this.userName = userName; // ユーザー名を設定
+        this.userName = userName;
     }
 
-    // getterメソッド
     public Map<String, Object> getSession() {
-        return session; // セッション情報を返す
+        return session;
     }
 
-    // setterメソッド
     @Override
     public void setSession(Map<String, Object> session) {
-        this.session = session; // セッション情報を設定
+        this.session = session;
     }
 }

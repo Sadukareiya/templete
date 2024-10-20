@@ -12,7 +12,7 @@ use ecsite;
 -- login_user_transaction テーブルを削除してから再作成
 drop table if exists login_user_transaction;
 
-create table login_user_teansaction (
+create table login_user_transaction (
     id int not null primary key auto_increment, -- ユーザーID（自動増加）
     login_id varchar(16) unique, -- ログインID（16文字以内の一意）
     login_pass varchar(16), -- ログインパスワード（16文字以内）
@@ -51,6 +51,7 @@ create table user_buy_item_transaction (
 INSERT INTO item_info_transaction (item_name, item_price, item_stock)
 VALUES ("ノートBook", 100, 50);
 
+
 -- ログイン情報を login_user_transaction テーブルに挿入
 INSERT INTO login_user_transaction (login_id, login_pass, user_name)
-VALUES ("internous", "internous01", "test");
+VALUES ("internous", "internous01", "test" );
